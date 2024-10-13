@@ -1,0 +1,48 @@
+// Header 
+#include <iostream>
+using namespace std;
+#include <string>
+#include <algorithm>
+
+void toLower(std::string& str) {
+    transform(str.begin(), str .end(), str.begin(), ::tolower);
+}
+
+string getResponse(const string& input) {
+    if (input == "hello" || input == "hi") {
+        return "Hello! How can I assist you today?";
+    } else if (input == "how are you?") {
+        return "I'm just a program, but thanks for asking!";
+    } else if (input == "what is your name?") {
+        return "I am a simple chatbot created in C++.";
+    } else if (input == "bye" || input == "exit") {
+        return "Goodbye! Have a great day!";
+    } else {
+        return "I'm sorry, I didn't understand that.";
+    }
+}
+
+   int main() {
+    string userInput;
+
+    cout << "Welcome to the Chatbot! Type 'exit' to end the conversation.\n";
+
+    while (true) {
+        cout << "You: ";
+        getline(cin, userInput); // Get user input
+
+        // Convert input to lowercase for easier matching
+        toLower(userInput);
+
+        // Get the chatbot's response
+       string response = getResponse(userInput);
+        cout << "Bot: " << response <<endl;
+
+        // Exit if the user types 'bye' or 'exit'
+        if (userInput == "bye" || userInput == "exit") {
+            break;
+        }
+    }
+
+    return 0;
+}
